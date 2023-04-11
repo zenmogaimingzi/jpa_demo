@@ -19,4 +19,8 @@ public interface CustomerService {
     void saveCustomer(TbCustomer customer);
 
     TbCustomer updateCustomer(TbCustomer customer);
+
+    void allSave(TbCustomer customer);
+
+    void deleteCustomer(TbCustomer customer);
 }

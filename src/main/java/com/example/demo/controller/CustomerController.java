@@ -4,13 +4,16 @@ import com.example.demo.entity.TbCustomer;
 import com.example.demo.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
- * @author pi_gaui
+ * @author qi_gaui
  */
 @RestController
 @Slf4j
@@ -30,7 +33,7 @@ public class CustomerController {
     }
 
     /**
-     * 查询所有customer
+     * 保存customer
      * @return
      */
     @PostMapping("save_customer")
@@ -49,4 +52,29 @@ public class CustomerController {
         TbCustomer dbCustomer = customerService.updateCustomer(customer);
         return dbCustomer  ;
     }
+
+
+
+    /**
+     * 大量保存customer
+     * @return
+     */
+    @PostMapping("allSave")
+    public void allSave (@RequestBody TbCustomer customer){
+        customerService.allSave(customer);
+    }
+
+
+
+    /**
+     * 删除customer
+     * @return
+     */
+    @PostMapping("deleteCustomer")
+    public void deleteCustomer(@RequestBody TbCustomer customer){
+        customerService.deleteCustomer(customer);
+    }
+
+
+
 }
